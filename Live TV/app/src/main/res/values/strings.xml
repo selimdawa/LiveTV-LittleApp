@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Live TV - Little App</string>
+
+    //Theme
+    <string name="basic_theme">Basic Theme</string>
+    <string name="sec_theme">Sec Theme</string>
+
+    <string name="live_tv">Live TV</string>
+    <string name="categories">Categories</string>
 </resources>

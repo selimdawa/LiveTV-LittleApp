@@ -12,7 +12,9 @@ import com.littleapp.livetv.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
 
-    private var binding: ActivitySplashBinding? = null
+    private var _binding: ActivitySplashBinding? = null
+    private val binding get() = _binding!!
+
     var context: Context = this@SplashActivity
 
     var time_per_second = 2
@@ -21,9 +23,8 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         THEME.setThemeOfApp(context)
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        val view = binding!!.root
-        setContentView(view)
+        _binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({ launch() }, time_final.toLong())
     }
@@ -31,6 +32,11 @@ class SplashActivity : AppCompatActivity() {
     private fun launch() {
         VOID.Intent1(context, CLASS.MAIN)
         finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     companion object {

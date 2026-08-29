@@ -2,7 +2,10 @@ package com.littleapp.livetv.Activity
 
 import android.content.Context
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.littleapp.livetv.Adapter.CategoryAdapter
 import com.littleapp.livetv.Model.Category
 import com.littleapp.livetv.Service.ChannelDataService
@@ -26,9 +29,16 @@ class CategoriesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         THEME.setThemeOfApp(context)
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         _binding = ActivityLiveTvCategoriesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         binding.toolbar.nameSpace.setText(R.string.categories)
         dataService = ChannelDataService(this)

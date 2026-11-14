@@ -10,7 +10,7 @@ activityKtx = "1.13.0"
 constraintlayout = "2.2.1"
 preferenceKtx = "1.2.1"
 #noinspection GradleDependency
-exoplayer = "2.14.2"
+exoplayer = "1.11.1"
 volley = "1.2.1"
 glide = "5.0.7"
 
